@@ -8,7 +8,7 @@ import React, {useReducer} from "react";
 
 type State={
   isRequestInProgress:boolean,
-  requestStep:string
+  requestStep:'start' | 'pending' | 'finished' | 'finished' | 'idle',
 }
 
 type Action = 
@@ -32,7 +32,7 @@ function requestReducer(state: State, action: Action): State {
     case 'FINISH_REQUEST':
       return { ...state, isRequestInProgress: false, requestStep: 'finished' };
     case 'RESET_REQUEST':
-      return { ...state, isRequestInProgress: false, requestStep: 'idle' };
+      return { ...state, isRequestInProgress: false, requestStep: 'finished' };
     default:
       return state;
   }
